@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styleCSS.css">
+    <title>Esercizio - Customers</title>
+</head>
+<body>
+
+<h1>Reservation list</h1>
+<hr>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Age</td>
+        <td>Reservation ID</td>
+        <td>Room</td>
+        <td>Check-in</td>
+        <td>Check-out</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    <tr th:each="reservation : ${reservation100}">
+        <td th:text="${reservation.customer.id}"></td>
+        <td th:text="${reservation.customer.name}"></td>
+        <td th:text="${reservation.customer.surname}"></td>
+        <td th:text="${reservation.customer.age}"></td>
+        <td th:text="${reservation.id}"></td>
+        <td th:text="${reservation.room}"></td>
+        <td th:text="${reservation.checkin}"></td>
+        <td th:text="${reservation.checkout}"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

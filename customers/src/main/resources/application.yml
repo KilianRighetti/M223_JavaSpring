@@ -1,0 +1,34 @@
+ spring:
+   datasource:
+     url: jdbc:h2:mem:customer
+   config:
+     activate:
+       on-profile: dev
+   sql:
+     init:
+       data-locations:
+         - classpath:/addressData.sql
+         - classpath:/customerData.sql
+         - classpath:/reservationData.sql
+
+ server:
+   port: 8080
+
+---
+
+ spring:
+   datasource:
+     url: jdbc:h2:mem:customer
+   config:
+     activate:
+       on-profile: prod
+   sql:
+     init:
+       data-locations:
+         - classpath:/addressData.sql
+         - classpath:/customerData.sql
+
+ server:
+   port: 8090
+
+---

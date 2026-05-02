@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Spectral:wght@300;400&display=swap');
+
+/* Sfondo generale */
+body {
+    background: radial-gradient(circle at top, #1a1f2b, #0b0e14 40%);
+    background-repeat: no-repeat;   /* impedisce la ripetizione */
+    background-attachment: fixed;   /* mantiene la luce ferma */
+    background-size: cover;         /* riempie tutta la pagina */
+
+    color: #d6e2ff;
+    font-family: 'Spectral', serif;
+    margin: 0;
+    padding: 40px;
+    min-height: 100vh;              /* evita duplicazioni su pagine lunghe */
+}
+
+/* Titoli */
+h1 {
+    font-family: 'Cinzel', serif;
+    text-align: left;
+    font-size: 36px;
+    color: #e6ecff;
+    text-shadow: 0 0 8px rgba(120,160,255,0.6);
+    margin-bottom: 5px;
+}
+
+
+/* Tabella */
+table {
+    width: 70%;
+    margin: auto;
+    border-collapse: collapse;
+    background: rgba(20, 25, 40, 0.8);
+    backdrop-filter: blur(6px);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(100,140,255,0.15);
+}
+
+/* Header tabella */
+thead {
+    background: linear-gradient(90deg, #1f2940, #2b3b66);
+    color: #ffffff;
+    font-family: 'Cinzel', serif;
+}
+
+/* Celle */
+td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(140,160,255,0.15);
+}
+
+/* Righe hover */
+tbody tr:hover {
+    background: rgba(90,120,255,0.12);
+    transition: 0.3s;
+}
+
+/* Form */
+form {
+    width: 400px;
+    margin: auto;
+    background: rgba(18, 22, 35, 0.85);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 25px rgba(80,120,255,0.15);
+}
+
+/* Label */
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-family: 'Cinzel', serif;
+}
+
+/* Input */
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #3d4a7a;
+    background: #0e1320;
+    color: #d6e2ff;
+    outline: none;
+}
+
+/* Focus input */
+input:focus {
+    border-color: #7ea6ff;
+    box-shadow: 0 0 6px rgba(120,160,255,0.5);
+}
+
+/* Bottone */
+button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(90deg, #3c4c8a, #6c7fff);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Hover bottone */
+button:hover {
+    background: linear-gradient(90deg, #5063b8, #8fa2ff);
+    box-shadow: 0 0 10px rgba(140,160,255,0.5);
+}
+
+/* Errori */
+.validationError {
+    color: #ff6b7a;
+    font-size: 12px;
+}
+
+.main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin: 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+}
+
+.main-nav a {
+    text-decoration: none;
+    font-weight: bold;
+    padding: 6px 10px;
+    border: 1px solid #999;
+    border-radius: 6px;
+    background-color: white;
+    color: black;
+    transition: all 0.15s ease;
+}
+
+.main-nav a:hover {
+    background-color: #e0e0e0;
+    border-color: #666;
+    color: #000;
+}
+
+.main-nav a:active {
+    transform: scale(0.97);
+}

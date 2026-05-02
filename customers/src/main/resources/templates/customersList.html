@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/styleCSS.css">
+    <title>Esercizio - Customers</title>
+</head>
+<body>
+
+<h1>User list</h1>
+<hr>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Surname</td>
+        <td>Age</td>
+        <td>Street</td>
+        <td>Number</td>
+        <td>ZIP</td>
+        <td>City</td>
+        <td>Nation</td>
+    </tr>
+    </thead>
+
+    <!-- Gli oggetti, essendo accoppiati, diventano navigabili, cioè si può passare da uno all’altro
+    (es: customer.address.street), dall’oggetto customer si accede all’oggetto address -->
+
+    <tbody>
+    <tr th:each="customer : ${customer100}">
+        <td th:text="${customer.id}"></td>
+        <td th:text="${customer.name}"></td>
+        <td th:text="${customer.surname}"></td>
+        <td th:text="${customer.age}"></td>
+        <td th:text="${customer.address.street}"></td>
+        <td th:text="${customer.address.num}"></td>
+        <td th:text="${customer.address.zip}"></td>
+        <td th:text="${customer.address.city}"></td>
+        <td th:text="${customer.address.nation}"></td>
+    </tr>
+    </tbody>
+</table>
+
+
+<br><br>
+<hr>
+<nav class="main-nav">
+    <a href="/customers">Tutti i clienti</a>
+    <a href="/customers/insert">Inserisci cliente</a>
+</nav>
+
+</body>
+</html>
