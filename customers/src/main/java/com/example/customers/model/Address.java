@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 // Questa classe verrà usata da Customer per sostituire l'attributo String che era l'indirizzo
 /* [È ALLO STESSO TEMPO]
@@ -14,6 +15,7 @@ import lombok.Data;
 
 @Entity
 @Data
+@NoArgsConstructor
 public class Address {
 
     @Id

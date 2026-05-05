@@ -9,7 +9,12 @@
 <h1>Insert customer:</h1>
 <hr><br>
 
-<form method="POST" th:action="@{/customers/insert}" th:object="${customer}">
+<!--
+Questo metodo POST è lo stesso per ambedue i percorsi (Insert ed Edit)
+   ==> <form method="POST"th:object="${customer}"> permette al percorso "/edit/{customerId}" di @PostMapping("/edit/{customerId}")
+   ==> <form method="POST" th:action="@{/customers/insert}" th:object="${customer}"> carica a prescindere il metodo @PostMapping("/insert")
+ -->
+<form method="POST"th:object="${customer}">
     <div>
         <label for="name">Nome:</label>
         <input type="text" id="name" th:field="${customer.name}" placeholder="Inserisci il nome" required/>

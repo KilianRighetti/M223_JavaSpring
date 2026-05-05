@@ -76,7 +76,6 @@ public class CustomerController {
         return "redirect:/customers";
     }
 
-
     @GetMapping("/{surnameToFilter}")
     public String getCustomerBySurname(Model model, @PathVariable("surnameToFilter") String surnameToFilter) {
 
@@ -93,6 +92,39 @@ public class CustomerController {
         model.addAttribute("reservation100", reservationService.getAllReservations()); // MODEL passa dati alla view
         return "reservationList";
     }
+
+    /*
+    * Questa sezione di codice è fondamentale per permettere la MODIFICA di dati già esistenti.
+    *   > INSERIMENTO: viene passato al front-end un oggetto vuoto
+    *   > MODIFICA: passo un oggetto con dati già presenti nel DB
+    *
+    *  [Customer customerToEdit] e` necessario per passare l'id del customer.
+    *   > La View (front-end) non contiene infatti l'ID, quindi devo passarlo in back-end
+    *     Senza questa riga, l'id sarebbe nullo
+     */
+    @GetMapping("/edit/{customerId}")
+    public String loadEditPage(@ModelAttribute Customer customer, Model model,
+                               @PathVariable Long customerId) {
+
+        Customer customerToEdit = customerService.findById(customerId);
+        model.addAttribute("customer", customerToEdit);
+        return "insertCustomer";
+    }
+
+
+    // Questo metodo visualizzerà i dati di 'customerToEdit' del metodo 'loadEditPage'. Il form verrà popolato con quei dati.
+    @PostMapping("/edit/{customerId}")
+    public String updateCustomer(@Valid Customer customer, Errors errors,
+                                 @PathVariable Long customerId) {
+        customer.setId(customerId);
+        if (errors.hasErrors()) {
+            return "insertCustomer";
+        } else {
+            customerService.save(customer); // Salva sul DB
+            return "redirect:/customers";
+        }
+    }
+
 
 //    @GetMapping("/customerbycity")
 //    public String getCustomerByCity(Model model, @RequestParam("city") String city) {

@@ -57,7 +57,6 @@ public class Customer {
      *  [@OneToMany] funge da composizione.
      *   > mappedBy: Indica a JPA che la relazione è già gestita dalla FK customer definita sul lato @ManyToOne
      *               Evita la creazione di tabelle join superflue.
-     *   >
      */
     @ToString.Exclude
     @OneToMany (mappedBy = "customer", cascade = CascadeType.ALL)

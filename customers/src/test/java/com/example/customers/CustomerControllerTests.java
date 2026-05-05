@@ -1,6 +1,7 @@
 package com.example.customers;
 
 import com.example.customers.data.CustomerRepository;
+import com.example.customers.model.Address;
 import com.example.customers.model.Customer;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @AutoConfigureMockMvc  // Abilita l'uso di MockMvc che ci permette di simulare le chiamate HTTP (GET, POST, ecc..)
 @SpringBootTest  // Avvia l'applicazione Spring con tutte le sue componenti
-@Transactional  // Non del tutto necessario qua, ma assicura che ogni test sia eseguito in modo transazionale (tutto o niente, modifiche incomplete vengono annullate)
+@Transactional
+// Non del tutto necessario qua, ma assicura che ogni test sia eseguito in modo transazionale (tutto o niente, modifiche incomplete vengono annullate)
 public class CustomerControllerTests {
 
     @Autowired
@@ -84,6 +86,28 @@ public class CustomerControllerTests {
                 .andExpect(status().isOk())  // Verifica che lo stato sia OK (200)
                 .andExpect(view().name("customersList"))  // Verifica che la vista sia "customerList"
                 .andExpect(model().attributeExists("customer100"))  // Verifica che il modello contenga "customers"
-                .andExpect(model().attribute("customer100", customerRepository.findBySurnameIgnoreCase("Rossi")));  // Verifica che "customer" contenga il risultato della query
+                .andExpect(model().attribute("customer100", customerRepository.findBySurnameIgnoreCase("Rossi"))); // Verifica che "customer" contenga il risultato della query
     }
+
+    @Test
+    public void testSaveCustomersWithModification() throws Exception {
+        // [-- Modifica di tutto a esclusione del cognome --]
+        mockMvc.perform(post("/customers/edit/1")
+                        .param("name", "Pasquale")
+                        .param("age", "22")
+                        .param("address.street", "via Cantonale")
+                        .param("address.num", "39")
+                        .param("address.zip", "6532")
+                        .param("address.city", "Castione-Arbedo")
+                        .param("address.nation", "Svizzera")
+                        .param("surname", "Rossi"))
+                .andExpect(status().is3xxRedirection());
+
+        // [-- Verifica che Rossi esista ancora --]
+        mockMvc.perform(get("/customers/Rossi"))
+                .andExpect(status().isOk())
+                .andExpect(model().attribute("customer100", hasSize(1)))
+                .andExpect(model().attribute("customer100", hasItem(hasProperty("name", is("Pasquale")))));
+    }
+
 }

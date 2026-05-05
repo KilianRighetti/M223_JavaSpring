@@ -5,6 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 // @Repository indica che questa interfaccia appartiene al livello di accesso ai dati
 // e si occupa di comunicare con il database
@@ -26,4 +27,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // [ METODI CUSTOM ]
     List<Customer> findBySurnameIgnoreCase(String surname);
     // List<Customer> findByCityIgnoreCase(String city);
+
+    Optional<Customer> findById(Long id);
 }

@@ -34,13 +34,13 @@ public class CustomerService {
     }
 
     // Metodo che cerca un cliente per id
-    public Object findById(Long customerId) {
+    public Customer findById(Long customerId) {
         /*
          * Il SERVICE passa l'id al REPOSITORY.
          * "findById" di solito restituisce un Optional<Customer>,
          * cioè un contenitore che può avere un Customer oppure essere vuoto.
          */
-        return customerRepository.findById(customerId);
+        return customerRepository.findById(customerId).orElseThrow();
     }
 
     // Metodo che salva un cliente nel database
