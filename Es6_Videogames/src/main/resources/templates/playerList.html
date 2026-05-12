@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayerList</title>
+</head>
+<body>
+
+<h1>Players</h1>
+<hr>
+<br>
+
+<table>
+  <thead>
+  <tr>
+    <td>ID</td>
+    <td>First name</td>
+    <td>Last Name</td>
+    <td>Age</td>
+    <td>Email</td>
+    <!-- >
+      <td>Team</td>
+      <td>Game Profile</td>
+    </!-->
+  </tr>
+  </thead>
+
+  <!-- Gli oggetti, essendo accoppiati, diventano navigabili, cioè si può passare da uno all’altro
+  (es: customer.address.street), dall’oggetto customer si accede all’oggetto address -->
+
+  <tbody>
+  <tr th:each="player : ${player1000}">
+    <td th:text="${player.id}"></td>
+    <td th:text="${player.firstName}"></td>
+    <td th:text="${player.lastName}"></td>
+    <td th:text="${player.age}"></td>
+    <td th:text="${player.email}"></td>
+
+  </tr>
+  </tbody>
+</table>
+
+
+</body>
+</html>

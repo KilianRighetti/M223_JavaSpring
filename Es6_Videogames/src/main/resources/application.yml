@@ -1,0 +1,13 @@
+ spring:
+   config:
+     activate:
+       on-profile: dev
+   sql:
+     init:
+       data-locations:
+         - classpath:/gameProfileData.sql
+         - classpath:/playerData.sql
+         - classpath:/teamData.sql
+
+ server:
+   port: 8080

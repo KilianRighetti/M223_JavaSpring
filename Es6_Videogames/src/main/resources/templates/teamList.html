@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TeamList</title>
+</head>
+<body>
+
+<h1>Team List</h1>
+<hr>
+<br>
+
+<table>
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>Name</td>
+        <td>Country</td>
+        <td>Founded At</td>
+        <!-- >
+            <td>Players</td>
+        </!-->
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr th:each="team : ${team1000}">
+        <td th:text="${team.id}"></td>
+        <td th:text="${team.name}"></td>
+        <td th:text="${team.country}"></td>
+        <td th:text="${team.foundedAt}"></td>
+        <td th:text="${team.deleted}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
